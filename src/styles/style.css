@@ -7,10 +7,45 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
+  --main-green: #408C65;
+  --sub-text-gray: #888888;
+  --placeholder-gray: #C4C4C4;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* 전체 요소에 대한 기본 설정 */
+* {
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+input {
+  cursor: text;  /* 입력 커서로 변경 */
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+/* 특정 요소들에 대한 커서 설정 */
+button, 
+a {
+    cursor: pointer;
+}
+
+/* 입력 필드는 텍스트 선택 가능하도록 설정 */
+input {
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
 }
 
 a {
@@ -37,6 +72,7 @@ h1 {
 
 #app {
   max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
