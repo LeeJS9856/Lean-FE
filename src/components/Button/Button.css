@@ -1,0 +1,19 @@
+.button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: var(--main-green);
+    color: white;
+}
+
+.button:focus {
+    outline: none;
+    border: none;
+}
+
+.login-button {
+    margin-top: 20px;
+}
