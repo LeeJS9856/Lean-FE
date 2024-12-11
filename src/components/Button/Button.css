@@ -9,11 +9,6 @@
     color: white;
 }
 
-.button:focus {
-    outline: none;
-    border: none;
-}
-
 .login-button {
     margin-top: 5px;
 }
