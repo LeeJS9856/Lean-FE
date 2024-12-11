@@ -49,4 +49,20 @@
     font-weight: 600;
     letter-spacing: -0.05em;
     margin-bottom: 50px;
+    color: black;
+}
+
+.error-message-container {
+    height: 2.5rem;  /* 에러 메시지 영역의 고정 높이 */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.login-error {
+    color: #dc3545;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 0 0;
+    text-align: center;
 }

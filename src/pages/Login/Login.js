@@ -1,11 +1,12 @@
 import Button from '../../components/Button/Button.js';
-import Input from '../../components/Input/Input.js';
+import Input from '../../components/Input/LoginInput.js';
 
 import './Login.css';
 
 export default class Login {
     constructor(container) {
         this.container = container;
+        this.loginError = false;
     }
 
     render() {
@@ -16,10 +17,13 @@ export default class Login {
         return `
             <div class="login-container">
                 <span id="service-name">전남대학교 물품 대여 서비스</span>
-                <span id="lean-name">LEAN</span>
-                <form id="loginForm" class="login-form">
+                <a href="/login" id="lean-name">LEAN</a>
+                <form id="loginForm" class="login-form" novalidate>
                     ${usernameInput.render()}
                     ${passwordInput.render()}
+                    <div class="error-message-container">
+                        ${this.loginError ? '<p class="login-error">로그인에 실패하였습니다</p>' : ''}
+                    </div>
                     ${loginButton.render()}
                 </form>
                 <div class="signup-link">
@@ -30,15 +34,24 @@ export default class Login {
         `;
     }
 
-    handleSubmit(e) {
+    async handleSubmit(e) {
         e.preventDefault();
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
         
-        // 로그인 로직 구현
-        // 성공시 홈 페이지로 이동
-        if (this.loginSuccess) {
-            window.router.navigate('/home');
+        try {
+            // 로그인 로직 실행
+            const loginSuccess = false;  // 여기에 실제 로그인 로직 구현
+            
+            if (loginSuccess) {
+                window.router.navigate('/home');
+            } else {
+                this.loginError = true;
+                this.mount();  // 에러 메시지를 보여주기 위해 다시 렌더링
+            }
+        } catch (error) {
+            this.loginError = true;
+            this.mount();
         }
     }
 
