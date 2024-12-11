@@ -1,5 +1,5 @@
 import Button from '../../components/Button/Button.js';
-import Input from '../../components/Input/Input.js';
+import Input from '../../components/Input/LoginInput.js';
 
 import './Login.css';
 

@@ -1,6 +1,6 @@
-import './Input.css';
+import './LoginInput.css';
 
-export default class Input {
+export default class LoginInput {
     constructor(type, id, placeholder, required = false) {
         this.type = type;
         this.id = id;
