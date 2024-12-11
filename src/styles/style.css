@@ -24,6 +24,7 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    box-sizing: border-box;
 }
 
 input {
@@ -74,7 +75,7 @@ h1 {
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 2rem;
   text-align: center;
 }
 
