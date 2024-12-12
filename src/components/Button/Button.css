@@ -1,17 +1,12 @@
 .button {
     width: 100%;
-    padding: 12px;
-    border-radius: 12px;
-    font-size: 12px;
+    border-radius: 16px;
+    font-size: 18px;
     font-weight: 600;
+    padding: 18px 0;
     cursor: pointer;
     background-color: var(--main-green);
     color: white;
-}
-
-.button:focus {
-    outline: none;
-    border: none;
 }
 
 .login-button {
