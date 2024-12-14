@@ -10,7 +10,7 @@ export default class LoginInput {
 
     render() {
         return `
-            <div class="form-group">
+            <div class="login-input-group">
                 <input 
                     type="${this.type}"
                     id="${this.id}"
