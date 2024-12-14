@@ -40,14 +40,13 @@ export default class Login {
         const password = document.getElementById('password').value;
         
         try {
-            // 로그인 로직 실행
-            const loginSuccess = false;  // 여기에 실제 로그인 로직 구현
+            const loginSuccess = false;
             
             if (loginSuccess) {
                 window.router.navigate('/home');
             } else {
                 this.loginError = true;
-                this.mount();  // 에러 메시지를 보여주기 위해 다시 렌더링
+                this.mount();
             }
         } catch (error) {
             this.loginError = true;
@@ -60,11 +59,10 @@ export default class Login {
         document.getElementById('loginForm')
             .addEventListener('submit', this.handleSubmit.bind(this));
         
-        // 회원가입 링크 클릭 이벤트 추가
         document.getElementById('signupLink')
             .addEventListener('click', (e) => {
                 e.preventDefault();
-                window.router.navigate('/signup');
+                window.router.navigate('/signup/profile');
             });
     }
 } 

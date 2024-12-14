@@ -53,7 +53,7 @@
 }
 
 .error-message-container {
-    height: 2.5rem;  /* 에러 메시지 영역의 고정 높이 */
+    height: 2.5rem;
     display: flex;
     align-items: flex-end;
     justify-content: center;

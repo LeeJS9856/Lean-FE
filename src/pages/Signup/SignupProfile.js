@@ -3,7 +3,7 @@ import Input from '../../components/Input/SignupInput.js';
 import Button from '../../components/Button/Button.js';
 import './Signup.css';
 
-export default class Signup {
+export default class SignupProfile {
     constructor(container) {
         this.container = container;
     }
