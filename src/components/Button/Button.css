@@ -5,8 +5,17 @@
     font-weight: 600;
     padding: 18px 0;
     cursor: pointer;
-    background-color: var(--main-green);
     color: white;
+    transition: all 0.3s ease;
+}
+
+.button:not(.disabled) {
+    background-color: var(--main-green);
+}
+
+.button.disabled {
+    background-color: #EDEEED;
+    color: #BDBDBD;
 }
 
 .login-button {

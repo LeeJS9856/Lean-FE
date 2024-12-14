@@ -1,5 +1,6 @@
 import Login from '../pages/Login/Login.js';
 import SignupProfile from '../pages/Signup/SignupProfile.js';
+import SignupAcademic from '../pages/Signup/SignupAcademic.js';
 
 export default class Router {
     constructor(container) {
@@ -7,7 +8,8 @@ export default class Router {
         this.routes = {
             '/': Login,
             '/login': Login,
-            '/signup/profile': SignupProfile
+            '/signup/profile': SignupProfile,
+            '/signup/academic': SignupAcademic
         };
 
         window.addEventListener('popstate', () => this.handleRoute());
