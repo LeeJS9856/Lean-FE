@@ -28,7 +28,7 @@ export default class Login {
                 </form>
                 <div class="signup-link">
                     <span>아직 회원이 아니신가요?</span>
-                    <a href="/signup/profile" id="signupLink">회원가입</a>
+                    <a href="/signup" id="signupLink">회원가입</a>
                 </div>
             </div>
         `;

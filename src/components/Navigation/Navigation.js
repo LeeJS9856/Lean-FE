@@ -1,8 +1,9 @@
 import './Navigation.css';
 
 export default class Navigation {
-    constructor(title) {
+    constructor(title, onBackClick) {
         this.title = title;
+        this.onBackClick = onBackClick;
     }
 
     render() {
@@ -18,8 +19,11 @@ export default class Navigation {
 
     addEvents() {
         const backButton = document.querySelector('.back-button');
-        backButton.addEventListener('click', () => {
-            window.history.back();
+        backButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (this.onBackClick) {
+                this.onBackClick();
+            }
         });
     }
 } 
