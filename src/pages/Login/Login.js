@@ -6,7 +6,28 @@ import './Login.css';
 export default class Login {
     constructor(container) {
         this.container = container;
-        this.loginError = false;
+        this.loginError = 0;
+        this.formData = {
+            username: '',
+            password: ''
+        }
+        this.tempLoginInfo = {
+            username: 'admin',
+            password: 'admin1234'
+        }
+    }
+
+    getErrorMessage() {
+        switch(this.loginError) {
+            case 0:
+                return '';
+            case 1:
+                return '아이디, 또는 비밀번호를 입력해주세요';
+            case 2:
+                return '로그인 정보가 일치하지 않습니다';
+            default:
+                return '';
+        }
     }
 
     render() {
@@ -22,7 +43,7 @@ export default class Login {
                     ${usernameInput.render()}
                     ${passwordInput.render()}
                     <div class="error-message-container">
-                        ${this.loginError ? '<p class="login-error">로그인에 실패하였습니다</p>' : ''}
+                        ${this.loginError ? `<p class="login-error">${this.getErrorMessage()}</p>` : ''}
                     </div>
                     ${loginButton.render()}
                 </form>
@@ -36,27 +57,45 @@ export default class Login {
 
     async handleSubmit(e) {
         e.preventDefault();
+        this.formData.username = document.getElementById('username').value;
+        this.formData.password = document.getElementById('password').value;
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-        
-        try {
-            const loginSuccess = false;
-            
-            if (loginSuccess) {
+        try { 
+            if(username=='' || password=='') {
+                this.loginError = 1;
+                this.mount();
+            }
+            else if (this.handleLogin(username, password)) {
                 window.router.navigate('/home');
             } else {
-                this.loginError = true;
+                this.loginError = 2;
                 this.mount();
             }
         } catch (error) {
-            this.loginError = true;
+            this.loginError = 1;
             this.mount();
         }
     }
 
+
     mount() {
         this.container.innerHTML = this.render();
+        if(this.formData.username) {
+            document.getElementById('username').value = this.formData.username;
+        }
+        if(this.formData.password) {
+            document.getElementById('password').value = this.formData.password;
+        }
+
         document.getElementById('loginForm')
             .addEventListener('submit', this.handleSubmit.bind(this));
+    }
+
+    handleLogin(username, password) {
+        if(username==this.tempLoginInfo.username && password==this.tempLoginInfo.password) {
+            return true;
+        }
+        return false;
     }
 } 
