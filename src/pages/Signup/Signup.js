@@ -2,6 +2,11 @@ import Navigation from '../../components/Navigation/Navigation.js';
 import Input from '../../components/Input/SignupInput.js';
 import Button from '../../components/Button/Button.js';
 import Dropdown from '../../components/Dropdown/SignupDropdown.js';
+import {isValidId, 
+    isValidPassword, 
+    doPasswordsMatch, 
+    showError, 
+    clearError } from './SignupValidators.js';
 import './Signup.css';
 
 export default class Signup {
@@ -242,6 +247,7 @@ export default class Signup {
         this.navigation.addEvents();
         signupButton.classList.add('disabled');
 
+        // 버튼 활성화 조건
         const checkInputs = () => {
             if (idInput.value && passwordInput.value && passwordConfirmInput.value) {
                 signupButton.classList.remove('disabled');
@@ -256,7 +262,32 @@ export default class Signup {
 
         signupButton.addEventListener('click', (e) => {
             e.preventDefault();
-            if (idInput.value && passwordInput.value && passwordConfirmInput.value) {
+            clearError(idInput);
+            clearError(passwordInput);
+            clearError(passwordConfirmInput);
+
+            let isValid = true;
+
+            // ID 검증
+            if (!isValidId(idInput.value)) {
+                showError(idInput, '아이디는 4~20자여야 합니다');
+                isValid = false;
+            }
+
+            // 비밀번호 검증
+            if (!isValidPassword(passwordInput.value)) {
+                showError(passwordInput, '비밀번호는 8자 이상, 특수문자를 1개 이상 포함해야 합니다');
+                isValid = false;
+            }
+
+            // 비밀번호 확인 검증
+            if (!doPasswordsMatch(passwordInput.value, passwordConfirmInput.value)) {
+                showError(passwordConfirmInput, '비밀번호가 일치하지 않습니다');
+                isValid = false;
+            }
+            
+            // 버튼 활성화 조건
+            if (isValid) {
                 this.signupData = {
                     ...this.signupData,
                     id: idInput.value,

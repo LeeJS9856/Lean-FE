@@ -70,3 +70,18 @@
     margin-bottom: 1rem;
     color: var(--main-green);
 }
+
+.error-message-container {
+    display: flex;
+    align-items: start;
+    justify-content: flex-start;
+    height: 1rem;
+}
+
+.signup-error {
+    color: #dc3545;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 0 0;
+    text-align: center;
+}
