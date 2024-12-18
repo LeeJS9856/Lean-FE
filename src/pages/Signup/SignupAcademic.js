@@ -88,11 +88,11 @@ export default class SignupAcademic {
             });
         });
 
-        //버튼 클릭시 회원가입 페이지로 이동
+        //버튼 클릭시 아이디 입력 페이지로 이동
         signupButton.addEventListener('click', (e) => {
             e.preventDefault();
             if (departmentInput.value && studentNumberInput.value && collegeDropdown.innerText !== '단과대학 선택') {
-                window.router.navigate('/signup/complete', { 
+                window.router.navigate('/signup/id', { 
                     state: { 
                         college : collegeDropdown.innerText,
                         department : departmentInput.value,
