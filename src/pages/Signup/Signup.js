@@ -9,6 +9,15 @@ export default class Signup {
         this.container = container;
         this.currentStep = 1;
         this.signupData = {};
+        this.handleBackClick = () => {
+            if (this.currentStep > 1) {
+                this.currentStep--;
+                this.mount();
+            }
+            else {
+                window.history.back();
+            }
+        };
     }
 
     render() {
@@ -35,7 +44,7 @@ export default class Signup {
     }
 
     renderProfileStep() {
-        this.navigation = new Navigation('학사인증');
+        this.navigation = new Navigation('학사인증', this.handleBackClick);
         const usernameInput = new Input('text', 'username', '이름', "이름 입력");
         const phoneInput = new Input('tel', 'phone', '휴대폰번호', "띄어쓰기나 -를 제외하고 입력");
         const signupButton = new Button('다음', 'button', 'signup-button');
@@ -58,7 +67,7 @@ export default class Signup {
     }
 
     renderAcademicStep() {
-        this.navigation = new Navigation('학사인증');
+        this.navigation = new Navigation('학사인증', this.handleBackClick);
         const collegeDropdown = new Dropdown('단과대학', ['공과대학', '인문대학', '사회대학', "AI융합대학", "교육대학"]);
         const departmentInput = new Input('text', 'department', '학과', "학과 입력");
         const studentNumberInput = new Input('number', 'student-number', '학번', "Ex) 201576");
@@ -83,7 +92,7 @@ export default class Signup {
     }
 
     renderIDStep() {
-        this.navigation = new Navigation('회원가입');
+        this.navigation = new Navigation('회원가입', this.handleBackClick);
         const idInput = new Input('text', 'ID', '아이디', "아이디 입력");
         const passwordInput = new Input('password', 'password', '비밀번호', "비밀번호는 8자이상, 특수문자 1개 이상");
         const passwordConfirmInput = new Input('password', 'password-confirm', '비밀번호 확인', "비밀번호 확인");
