@@ -128,9 +128,6 @@ export default class Signup {
 
     mount() {
         this.container.innerHTML = this.render();
-        if (this.navigation) {
-            this.navigation.addEvents();
-        }
         this.addEvents();
     }
 
@@ -155,6 +152,17 @@ export default class Signup {
         const phoneInput = document.getElementById('phone');
         const signupButton = document.querySelector('.signup-button');
 
+        this.navigation.addEvents();
+        signupButton.classList.add('disabled');
+
+        // 이전 데이터 입력
+        if(this.signupData.username && this.signupData.phone) {
+            usernameInput.value = this.signupData.username;
+            phoneInput.value = this.signupData.phone;
+            signupButton.classList.remove('disabled');
+        }
+
+        // 버튼 활성화 조건
         const checkInputs = () => {
             if (usernameInput.value && phoneInput.value) {
                 signupButton.classList.remove('disabled');
@@ -163,7 +171,6 @@ export default class Signup {
             }
         };
 
-        signupButton.classList.add('disabled');
         usernameInput.addEventListener('input', checkInputs);
         phoneInput.addEventListener('input', checkInputs);
 
@@ -187,8 +194,18 @@ export default class Signup {
         const studentNumberInput = document.getElementById('student-number');
         const signupButton = document.querySelector('.signup-button');
 
+        this.navigation.addEvents();
         signupButton.classList.add('disabled');
 
+        // 이전 데이터 입력
+        if(this.signupData.college && this.signupData.department && this.signupData.studentNumber) {
+            collegeDropdown.innerText = this.signupData.college;
+            departmentInput.value = this.signupData.department;
+            studentNumberInput.value = this.signupData.studentNumber;
+            signupButton.classList.remove('disabled');
+        }
+
+        // 버튼 활성화 조건
         const checkInputs = () => {
             if (departmentInput.value && studentNumberInput.value && collegeDropdown.innerText !== '단과대학 선택') {
                 signupButton.classList.remove('disabled');
@@ -222,6 +239,7 @@ export default class Signup {
         const passwordConfirmInput = document.getElementById('password-confirm');
         const signupButton = document.querySelector('.signup-button');
 
+        this.navigation.addEvents();
         signupButton.classList.add('disabled');
 
         const checkInputs = () => {
